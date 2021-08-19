@@ -4,6 +4,7 @@ import { LRUCache, method, Service } from '@vtex/api'
 import { Clients } from './clients'
 import { status } from './middlewares/status'
 import { validate } from './middlewares/validate'
+import { search_proxy } from './middlewares/search-proxy'
 
 const TIMEOUT_MS = 800
 
@@ -27,6 +28,9 @@ const clients: ClientsConfig<Clients> = {
     status: {
       memoryCache,
     },
+    searchClient: {
+      memoryCache,
+    }
   },
 }
 
@@ -48,5 +52,8 @@ export default new Service({
     status: method({
       GET: [validate, status],
     }),
+    search: method({
+      GET:[search_proxy],
+    })
   },
 })
