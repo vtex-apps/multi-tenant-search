@@ -9,6 +9,10 @@
     "status": {
       "path": "/_v/status/:code",
       "public": true
+    },
+    "search": {
+      "path": "/_v/multi-tenant-search",
+      "public": true
     }
   }
 }
